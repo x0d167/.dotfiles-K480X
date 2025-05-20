@@ -1,0 +1,7 @@
+[Unit]
+Description=Check for system and AUR updates
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/K480X/scripts/check-updates.sh
+

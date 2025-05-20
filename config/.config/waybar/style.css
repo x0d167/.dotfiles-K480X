@@ -1,0 +1,131 @@
+@import "colors.css";
+
+* {
+    /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
+    font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    transition: background-color .3s ease-out;
+}
+
+window#waybar {
+    background: transparent;
+    color: @on_surface;
+    font-family: 
+        SpaceMono Nerd Font,
+        feather;
+    transition: background-color .5s;
+}
+
+.modules-left,
+.modules-center,
+.modules-right
+{
+    background: @surface_container_high;
+    margin: 5px 10px;
+    padding: 0 5px;
+    border-radius: 15px;
+}
+.modules-left {
+    padding: 0;
+}
+.modules-center {
+    padding: 0 10px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#bluetooth,
+#custom-exit,
+#pulseaudio,
+#wireplumber,
+#custom-updates,
+#custom-media,
+#tray,
+#mode,
+#custom-hypridle,
+#custom-hyprshade,
+#custom-notification,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#language,
+#mpd {
+    padding: 0 10px;
+    border-radius: 15px;
+}
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#custom-media:hover,
+#tray:hover,
+#mode:hover,
+#idle_inhibitor:hover,
+#scratchpad:hover,
+#power-profiles-daemon:hover,
+#language:hover,
+#mpd:hover {
+    background: rgba(26, 27, 38, 0.9);
+}
+
+
+#workspaces button {
+  background: transparent;
+  font-family:
+    SpaceMono Nerd Font,
+    feather;
+  font-weight: 900;
+  font-size: 13pt;
+  color: @on_surface;
+  border:none;
+  border-radius: 15px;
+}
+
+#workspaces button.active {
+    background: @primary_container; 
+}
+
+#workspaces button:hover {
+  background: @surface_container_low;
+  color: #cdd6f4;
+  box-shadow: none;
+}
+
+#custom-arch {
+    margin-left: 5px;
+    padding: 0 10px;
+    font-size: 25px;
+    transition: color .5s;
+}
+#custom-arch:hover {
+    color: @primary;
+}
+#custom-updates {
+  padding: 0 8px;
+  transition: color 0.3s ease;
+}
+
+#custom-updates.no-updates {
+  color: rgba(255, 255, 255, 0.1);  /* barely visible / transparent */
+}
+
+#custom-updates.has-updates {
+  color: #98c379;  /* bright green, matches other themes */
+}
+
+#custom-updates.unknown-updates {
+  color: #d19a66;  /* orange-ish fallback */
+}
