@@ -1,5 +1,3 @@
----
-
 # 🔧 dotfiles-K480X
 
 Custom dotfiles for my Arch-based ThinkPad T480 system — codename: **KRS-K480X**.  
