@@ -45,3 +45,7 @@ cat <<EOF > "$rasi_file"
     current-image: url("$blurred", height);
 }
 EOF
+
+# Reload Waybar to apply new theme
+killall waybar 2>/dev/null
+waybar & 

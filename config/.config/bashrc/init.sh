@@ -22,6 +22,3 @@ elif [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
 
-# z is hard to type but c'est la vie
-# eval "$(zoxide init bash)"
-# export _ZO_DOCTOR=0

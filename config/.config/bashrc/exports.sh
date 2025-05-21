@@ -62,6 +62,7 @@ else
   alias grep='grep --color=auto'
 fi
 
+
 # PATH additions
 export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bin:$HOME/.local/share/flatpak/exports/bin:$HOME/.cargo/bin/hx"
 export PATH="$PATH:/opt/nvim/"

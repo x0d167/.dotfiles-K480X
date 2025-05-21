@@ -79,6 +79,7 @@ alias mx='chmod a+x'
 
 # Search & info
 alias h="history | grep "
+alias hist="fc -l -r 1 | fzf --tac | sed 's/^[ ]*[0-9]\+[ ]*//'"
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias f="find . | grep "

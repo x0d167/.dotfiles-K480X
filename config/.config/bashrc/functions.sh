@@ -60,6 +60,17 @@ pwdtail() {
   pwd | awk -F/ '{nlast = NF -1; print $nlast"/"$NF}'
 }
 
+__fuzzy_history() {
+  local selected
+  selected=$(HISTTIMEFORMAT= history | tac | fzf --no-sort --preview 'echo {}' --height=40% --border --prompt='History > ' | sed 's/^[ ]*[0-9]\+[ ]*//')
+  if [[ -n "$selected" ]]; then
+    READLINE_LINE="$selected"
+    READLINE_POINT=${#selected}
+  fi
+}
+
+bind -x '"\C-r": __fuzzy_history'
+
 # ============================
 # 📥 Download Helpers
 # ============================
@@ -152,6 +163,26 @@ extract() {
       echo "'$archive' is not a valid file!"
     fi
   done
+}
+
+wallpaper_convert() {
+    local dir="$HOME/media/pictures/wallpapers"
+    shopt -s nullglob nocaseglob
+
+    echo ":: Converting non-PNG images in $dir to .png..."
+
+    for file in "$dir"/*.*; do
+        ext="${file##*.}"
+        name="${file%.*}"
+
+        if [[ "$ext" != "png" ]]; then
+            new="$name.png"
+            echo " → $file → ${new##*/}"
+            magick "$file" "$new" && rm "$file"
+        fi
+    done
+
+    echo ":: Done. Only PNGs remain."
 }
 
 # ============================
@@ -372,6 +403,8 @@ index() {
     "up         - ⬆️ Go up N directories"
     "ver        - 🧠 Show version info"
     "z          - 🚀 zoxide wrapper"
+    "wallpaper_convert - 🖼️ Convert all non-PNG images in wallpapers dir to PNG and remove originals."
+    "fuzzy_history  - 🧠 Fuzzy History Search with Ctrl+R (Atuin-free)"
   )
   echo -e "\n📚 Custom Function Index\n────────────────────────────"
   for line in "${lines[@]}"; do
