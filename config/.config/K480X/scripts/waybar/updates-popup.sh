@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 TERMINAL="kitty"
-SUMMARY_FILE=~/.cache/update_summary
+SUMMARY_FILE="$HOME/.cache/update_summary"
 
 $TERMINAL --class floating-update -e bash -c '
-    if [[ -f "$SUMMARY_FILE" ]]; then
-        cat "$SUMMARY_FILE"
+    summary="$HOME/.cache/update_summary"
+    if [[ -f "$summary" ]]; then
+        cat "$summary"
         echo
         read -p "Run full update? (y/N) " ans
         [[ $ans =~ ^[Yy]$ ]] && paru -Syu

@@ -1,9 +1,9 @@
 [Unit]
-Description=Run update check at boot and every 6 hours
+Description=Run update check at boot and every 30 minutes
 
 [Timer]
 OnBootSec=2min
-OnUnitActiveSec=6h
+OnUnitActiveSec=30min
 Persistent=true
 
 [Install]
