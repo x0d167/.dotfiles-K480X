@@ -43,6 +43,8 @@ Everything is managed using **GNU Stow** to cleanly symlink into `~`.
 * `Matugen` – Dynamic theming
 * `Fastfetch` – Eye candy
 * `Atuin` – Shell history, synced and encrypted
+* `wlogout` – GUI logout screen
+* `Yazi` – TUI file manager
 * `etc` – Work in progress
 
 ---
