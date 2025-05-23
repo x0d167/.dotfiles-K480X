@@ -15,7 +15,8 @@ output_path = '~/.config/rofi/colors.rasi'
 
 [templates.kitty]
 input_path = "~/.config/matugen/templates/kitty-colors.conf"
-output_path = "~/.config/kitty/colors-matugen.conf"
+output_path = "~/.config/kitty/colors.conf"
+post_hook = "kitty @ set-colors -a -c ~/.config/kitty/colors.conf"
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
@@ -28,6 +29,7 @@ output_path = '~/.config/gtk-4.0/colors.css'
 [templates.pywalfox]
 input_path = '~/.config/matugen/templates/pywalfox-colors.json'
 output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox update'
 
 [templates.wlogout]
 input_path = '~/.config/matugen/templates/colors.css'
@@ -50,3 +52,6 @@ input_path = '~/.config/matugen/templates/ohmyposh-colors.json'
 output_path = '~/.config/ohmyposh/colors.json'
 post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv /tmp/new_theme.json ~/.config/ohmyposh/EDM115-newline.omp.json"
 
+[templates.yazi]
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'

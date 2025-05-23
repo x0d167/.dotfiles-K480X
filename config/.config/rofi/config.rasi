@@ -33,6 +33,8 @@ configuration {
     color11: @primary;
     color5: @on-primary-fixed;
     foreground: @on-surface;
+    background: @surface-container-high;
+    current-image: url("~/.config/K480X/cache/current_wallpaper");
 }
 
 /* ---- Main Window ---- */
@@ -51,7 +53,7 @@ window {
     border:                    3px;
     border-color:              @color11;
     border-radius:             2em;
-    background-color:          @background;
+    background-color:          #ffffff;
 }
 
 mainbox {
@@ -71,7 +73,7 @@ inputbar {
     padding:                   5em;
     children:                  [ "textbox-prompt-colon", "entry" ];
     background-color:          transparent;
-    backgroun-image:           url("~/.config/K480X/cache/current_wallpaper", width);
+    background-image:           url("~/.config/K480X/cache/current_wallpaper", width);
 }
 
 textbox-prompt-colon {
@@ -82,7 +84,7 @@ textbox-prompt-colon {
     text-color:                @foreground;
     border-radius:             2em 0em 0em 2em;
     background-color:          @color5;
-    backgroun-image:           url("~/.config/K480X/cache/current_wallpaper", width);
+    background-image:           url("~/.config/K480X/cache/current_wallpaper", width);
 }
 
 entry {

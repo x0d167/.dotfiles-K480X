@@ -31,6 +31,8 @@ systemctl --user stop xdg-desktop-portal-gnome
 systemctl --user stop xdg-desktop-portal-kde
 systemctl --user stop xdg-desktop-portal-wlr
 systemctl --user stop xdg-desktop-portal-hyprland
+systemctl --user stop gnome-keyring-daemon
+
 sleep $_sleep1
 
 # Start xdg-desktop-portal-hyprland
@@ -52,7 +54,4 @@ systemctl --user start pipewire
 systemctl --user start wireplumber
 systemctl --user start xdg-desktop-portal
 systemctl --user start xdg-desktop-portal-hyprland
-
-# Run waybar
-sleep $_sleep3
-waybar
+systemctl --user start gnome-keyring-daemon

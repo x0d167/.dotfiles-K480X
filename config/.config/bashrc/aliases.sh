@@ -51,7 +51,7 @@ alias lla='ls -Al'
 alias las='ls -A'
 alias lls='ls -l'
 alias et='eza -T'
-alias yf='yazi'
+alias yz='yazi'
 
 # Git shortcuts
 alias gs='git status'

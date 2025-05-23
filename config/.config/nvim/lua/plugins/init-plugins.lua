@@ -236,4 +236,11 @@ return {
             completions = { lsp = { enabled = true } },
         },
     },
+    -- git gud @ vim motions...
+    {
+        "m4xshen/hardtime.nvim",
+        lazy = false,
+        dependencies = { "MunifTanjim/nui.nvim" },
+        opts = {},
+    },
 }

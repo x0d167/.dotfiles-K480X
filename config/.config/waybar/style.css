@@ -20,11 +20,12 @@ window#waybar {
 .modules-center,
 .modules-right
 {
-    background: @primary_container;
+    /* background: @primary_container; */
+    background: transparent;
     color: @on_primary_container;
     margin: 5px 10px;
     padding: 0 5px;
-    border: 2px solid @primary;
+    /* border: 2px solid @primary; */
     border-radius: 15px;
 }
 .modules-left {
@@ -64,7 +65,7 @@ window#waybar {
 
 #clock:hover,
 #battery:hover {
-    background: @primary_container;
+    background: @surface_container_low;
     color: @on_primary_container;
 }
 #cpu:hover,

@@ -1,0 +1,30 @@
+{
+    "label" : "lock",
+    "action" : "~/.config/K480X/scripts/hypr/power.sh lock",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "logout",
+    "action" : "~/.config/K480X/scripts/hypr/power.sh exit",
+    "text" : "Log Out",
+    "keybind" : "e"
+}
+{
+    "label" : "suspend",
+    "action" : "~/.config/K480X/scripts/hypr/power.sh suspend",
+    "text" : "Suspend",
+    "keybind" : "u"
+}
+{
+    "label" : "reboot",
+    "action" : "~/.config/K480X/scripts/hypr/power.sh reboot",
+    "text" : "Restart",
+    "keybind" : "r"
+}
+{
+    "label" : "shutdown",
+    "action" : "~/.config/K480X/scripts/hypr/power.sh shutdown",
+    "text" : "K480X/power Off",
+    "keybind" : "s"
+}

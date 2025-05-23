@@ -159,7 +159,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%H:%M | %e %B} ",
+        "format": "{:%I:%M %p | %e %B} ",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
