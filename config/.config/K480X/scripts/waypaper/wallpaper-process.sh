@@ -33,10 +33,10 @@ if [[ -f "$archived_blur" && -f "$archived_square" ]]; then
     cp "$archived_square" "$square"
 else
     # Generate 50x30 blurred version
-    magick "$input" -resize 50x30^ -gravity center -extent 50x30 -blur 0x12 "$blurred"
+    magick "$input" -resize 1920x1200^ -gravity center -extent 1920x1200 -blur 0x12 "PNG24:$blurred"
 
     # Generate small square crop
-    magick "$input" -resize 50x50^ -gravity center -extent 50x50 "$square"
+    magick "$input" -resize 1200x1200^ -gravity center -extent 1200x1200 "PNG24:$square"
 
     # Save to archive
     cp "$blurred" "$archived_blur"

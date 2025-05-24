@@ -6,3 +6,8 @@
 for part in init.sh exports.sh aliases.sh prompt.sh functions.sh; do
   [ -f "$HOME/.config/bashrc/$part" ] && source "$HOME/.config/bashrc/$part"
 done
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/operator/.lmstudio/bin"
+# End of LM Studio CLI section
+
