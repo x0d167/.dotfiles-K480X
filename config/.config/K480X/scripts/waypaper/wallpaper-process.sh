@@ -4,6 +4,14 @@ input="$1"
 cache_dir="$HOME/.config/K480X/cache"
 archive_dir="$cache_dir/wallpaper-generated"
 
+# Tell Matugen the current wallpaper
+matugen image "$input"
+wallust run "$input"
+
+# Reload Waybar to apply new theme
+killall waybar 2>/dev/null
+waybar & 
+
 mkdir -p "$cache_dir" "$archive_dir"
 
 filename=$(basename "$input")
@@ -11,13 +19,6 @@ base="${filename%.*}"
 
 # Write current wallpaper path to file
 echo "$input" > "$cache_dir/current_wallpaper"
-
-# Tell Matugen the current wallpaper
-matugen image "$input"
-
-# Reload Waybar to apply new theme
-killall waybar 2>/dev/null
-waybar & 
 
 # Define outputs
 blurred="$cache_dir/blurred_wallpaper.png"
