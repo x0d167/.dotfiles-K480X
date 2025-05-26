@@ -54,5 +54,10 @@ out=""
 [[ $commit_behind -gt 0 ]] && out+="${RED}⇣${commit_behind}${RESET} "    # behind
 
 # Output final result
-echo "$out" | sed 's/ $//'
+# echo "$out" | sed 's/ $//'
 
+if [[ -n "$out" ]]; then
+    echo "$out" | sed 's/ $//'
+else
+  echo -e "${GREEN}✔${RESET}"
+fi
