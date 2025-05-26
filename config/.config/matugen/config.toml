@@ -39,13 +39,13 @@ output_path = '~/.config/wlogout/colors.css'
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/swaync/colors.css'
 
-# [templates.nwgdock]
-# input_path = '~/.config/matugen/templates/colors.css'
-# output_path = '~/.config/nwg-dock-hyprland/colors.css'
-
 [templates.sequences]
 input_path = '~/.config/matugen/templates/sequences'
 output_path = '~/.cache/wal/sequences'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship-colors.toml'
+output_path = '~/.config/starship/starship.toml'
 
 [templates.ohmyposh]
 input_path = '~/.config/matugen/templates/ohmyposh-colors.json'

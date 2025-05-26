@@ -3,7 +3,7 @@ return {
 	{ "folke/lazy.nvim", version = false },
 
     -- Treesitter for syntax highlighting
-    { 
+    {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         opts = {
@@ -68,7 +68,7 @@ return {
             hi TablineFill guibg=NONE ctermbg=NONE
             hi StatusLine guibg=NONE ctermbg=NONE guifg=#FFFFFF ctermfg=White
             hi StatusLineNC guibg=NONE ctermbg=NONE guifg=#888888 ctermfg=Gray
-            ]])            
+            ]])
         end,
     },
     {
@@ -242,5 +242,43 @@ return {
         lazy = false,
         dependencies = { "MunifTanjim/nui.nvim" },
         opts = {},
+    },
+    {
+        'stevearc/conform.nvim',
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        keys = {
+            {
+                "<leader>cf",
+                function()
+                    require("conform").format({ async = true })
+                end,
+                mode = "",
+                desc = "Format buffer",
+            },
+        },
+        ---@module "conform"
+        ---@type conform.setupOpts
+        opts = {
+            formatters_by_ft = {
+                lua = { "stylua" },
+                python = { "ruff" },
+                bash = { "shfmt" },
+                shell = { "shfmt" },
+                rust = { "rustfmt" },
+            },
+            default_format_opts = {
+                lsp_format = "fallback",
+            },
+            format_on_save = { timeout_ms = 500 },
+            formatters = {
+                shfmt = {
+                    prepend_args = { "-i", "2" },
+                },
+            },
+        },
+        init = function()
+            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        end,
     },
 }

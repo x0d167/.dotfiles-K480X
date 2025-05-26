@@ -1,197 +1,63 @@
-[aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+format = '''
+$directory$git_branch$git_status$rust$python
+$character'''
 
-[bun]
-format = '\[[$symbol($version)]($style)\]'
+palette = 'colors'
 
-[c]
-format = '\[[$symbol($version(-$name))]($style)\]'
+[palettes.colors]
+mustard = '#af8700' # example
+color1 = '#82d3e2'
+color2 = '#00363e'
+color3 = '#bfc8ca'
+color4 = '#1b2122'
+color5 = '#00363e'
+color6 = '#0e1416'
+color7 = '#0e1416'
+color8 = '#82d3e2'
+color9 = '#bbc5eb'
 
-[cpp]
-format = '\[[$symbol($version(-$name))]($style)\]'
+# Prompt symbols 
+[character]
+success_symbol = "[🞈](color9 bold)"
+error_symbol = "[🞈](@{error})"
+vicmd_symbol = "[🞈](#f9e2af)"
 
-[cmake]
-format = '\[[$symbol($version)]($style)\]'
+[directory]
+format = "[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[ ](fg:color4)"
 
-[cmd_duration]
-format = '\[[⏱ $duration]($style)\]'
-
-[cobol]
-format = '\[[$symbol($version)]($style)\]'
-
-[conda]
-format = '\[[$symbol$environment]($style)\]'
-
-[crystal]
-format = '\[[$symbol($version)]($style)\]'
-
-[daml]
-format = '\[[$symbol($version)]($style)\]'
-
-[dart]
-format = '\[[$symbol($version)]($style)\]'
-
-[deno]
-format = '\[[$symbol($version)]($style)\]'
-
-[docker_context]
-format = '\[[$symbol$context]($style)\]'
-
-[dotnet]
-format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
-
-[elixir]
-format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
-
-[elm]
-format = '\[[$symbol($version)]($style)\]'
-
-[erlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[fennel]
-format = '\[[$symbol($version)]($style)\]'
-
-[fossil_branch]
-format = '\[[$symbol$branch]($style)\]'
-
-[gcloud]
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [git_branch]
-format = '\[[$symbol$branch]($style)\]'
+format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
-
-[golang]
-format = '\[[$symbol($version)]($style)\]'
-
-[gradle]
-format = '\[[$symbol($version)]($style)\]'
-
-[guix_shell]
-format = '\[[$symbol]($style)\]'
-
-[haskell]
-format = '\[[$symbol($version)]($style)\]'
-
-[haxe]
-format = '\[[$symbol($version)]($style)\]'
-
-[helm]
-format = '\[[$symbol($version)]($style)\]'
-
-[hg_branch]
-format = '\[[$symbol$branch]($style)\]'
-
-[java]
-format = '\[[$symbol($version)]($style)\]'
-
-[julia]
-format = '\[[$symbol($version)]($style)\]'
-
-[kotlin]
-format = '\[[$symbol($version)]($style)\]'
-
-[kubernetes]
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
-
-[lua]
-format = '\[[$symbol($version)]($style)\]'
-
-[memory_usage]
-format = '\[$symbol[$ram( | $swap)]($style)\]'
-
-[meson]
-format = '\[[$symbol$project]($style)\]'
-
-[nim]
-format = '\[[$symbol($version)]($style)\]'
-
-[nix_shell]
-format = '\[[$symbol$state( \($name\))]($style)\]'
-
-[nodejs]
-format = '\[[$symbol($version)]($style)\]'
-
-[ocaml]
-format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
-
-[opa]
-format = '\[[$symbol($version)]($style)\]'
-
-[openstack]
-format = '\[[$symbol$cloud(\($project\))]($style)\]'
-
-[os]
-format = '\[[$symbol]($style)\]'
-
-[package]
-format = '\[[$symbol$version]($style)\]'
-
-[perl]
-format = '\[[$symbol($version)]($style)\]'
-
-[php]
-format = '\[[$symbol($version)]($style)\]'
-
-[pijul_channel]
-format = '\[[$symbol$channel]($style)\]'
-
-[pixi]
-format = '\[[$symbol$version( $environment)]($style)\]'
-
-[pulumi]
-format = '\[[$symbol$stack]($style)\]'
-
-[purescript]
-format = '\[[$symbol($version)]($style)\]'
-
-[python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-
-[raku]
-format = '\[[$symbol($version-$vm_version)]($style)\]'
-
-[red]
-format = '\[[$symbol($version)]($style)\]'
-
-[ruby]
-format = '\[[$symbol($version)]($style)\]'
-
-[rust]
-format = '\[[$symbol($version)]($style)\]'
-
-[scala]
-format = '\[[$symbol($version)]($style)\]'
-
-[spack]
-format = '\[[$symbol$environment]($style)\]'
-
-[sudo]
-format = '\[[as $symbol]($style)\]'
-
-[swift]
-format = '\[[$symbol($version)]($style)\]'
-
-[terraform]
-format = '\[[$symbol$workspace]($style)\]'
+format = "[](fg:color4)[$all_status$ahead_behind](fg:color3 bg:color4)[](fg:color4)"
+# format = '[$all_status$ahead_behind](fg:color3 bg:color4)[](fg:color4)'
+style = 'bold'
+untracked = '?'
+staged = '[++\($count\)](green)'
+modified = '!'
+deleted = '✘'
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+conflicted = ''
 
 [time]
-format = '\[[$time]($style)\]'
+format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
+disabled = false
+time_format = "%R" # Hour:Minute Format
 
-[username]
-format = '\[[$user]($style)\]'
+[python]
+format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5)( ${virtualenv})](fg:color3 bg:color4)[](fg:color4) "
+symbol = ''
+# pyenv_version_name = true
+pyenv_prefix = 'venv'
 
-[vagrant]
-format = '\[[$symbol($version)]($style)\]'
-
-[vlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[zig]
-format = '\[[$symbol($version)]($style)\]'
-
-[solidity]
-format = '\[[$symbol($version)]($style)\]'
+[rust]
+format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[](fg:color4) "
+symbol = '' 

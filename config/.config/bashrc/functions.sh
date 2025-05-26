@@ -299,6 +299,27 @@ z() {
   fi
 }
 
+# === FZF UTILITY FUNCTIONS ===
+
+fzf_open_file() {
+  local file
+  file=$(find . -type f 2>/dev/null | fzf) && nvim "$file"
+}
+
+fzf_cd() {
+  local dir
+  dir=$(find . -type d 2>/dev/null | fzf) && cd "$dir"
+}
+
+# === SHELL KEYBINDINGS (Interactive use only) ===
+if [[ $- == *i* ]]; then
+  # Ctrl+F opens file in nvim
+  bind -x '"\C-f": fzf_open_file'
+
+  # Ctrl+D fuzzy cd into a directory
+  bind -x '"\C-o": fzf_cd'
+fi
+
 # ============================
 # 🧠 System Info / OS
 # ============================
@@ -388,6 +409,8 @@ index() {
     "extract    - 📦 Extract any archive"
     "ftext      - 🔎 Search files by content"
     "fwstatus   - 🔥 Show firewall status"
+    "fzf_open_file - 📂 Fuzzy-find and open file in Neovim (bound to Ctrl+F)"
+    "fzf_cd        - 📁 Fuzzy-find and cd into directory (bound to Ctrl+O)"
     "gcom       - 🧪 Git commit helper"
     "gundo      - ↩️ Undo last commit"
     "inspect    - 📦 Inspect PKGBUILD"
