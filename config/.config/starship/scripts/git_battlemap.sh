@@ -59,5 +59,5 @@ out=""
 if [[ -n "$out" ]]; then
     echo "$out" | sed 's/ $//'
 else
-  echo -e "${GREEN}✔${RESET}"
+  echo -e "${GREEN}✔${RESET}"
 fi
