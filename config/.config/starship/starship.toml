@@ -18,21 +18,28 @@ color9 = '#bbc5eb'
 
 # Prompt symbols 
 [character]
-success_symbol = "[🞈](color9 bold)"
-error_symbol = "[🞈](@{error})"
-vicmd_symbol = "[🞈](#f9e2af)"
+# success_symbol = "[🞈](color9 bold)"
+success_symbol = "[ ❯❯](color9 bold)"
+# error_symbol = "[🞈](@{error})"
+error_symbol = "[ ❯❯](@{error})"
+# vicmd_symbol = "[🞈](#f9e2af)"
+vicmd_symbol = "[ ❯❯](#f9e2af)"
 
 [directory]
 format = "[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[ ](fg:color4)"
 
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"docs" = "󰈙 "
+"downloads" = " "
+"music" = " "
+"pictures" = " "
+"videos" = " "
+"books" = " "
+"dev" = ""
+".config" = ""
 
 [git_branch]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
+format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
 
 [custom.git_battlemap]
 command = "~/.config/starship/scripts/git_battlemap.sh"

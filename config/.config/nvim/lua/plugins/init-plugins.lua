@@ -1,6 +1,6 @@
 return {
-	-- Plugin Manager
-	{ "folke/lazy.nvim", version = false },
+    -- Plugin Manager
+    { "folke/lazy.nvim",             version = false },
 
     -- Treesitter for syntax highlighting
     {
@@ -40,11 +40,11 @@ return {
         opts = {},
         -- stylua: ignore
         keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },
     },
     {
@@ -106,12 +106,12 @@ return {
         event = "VeryLazy",
         opts = {
             mappings = {
-                add = "gsa", -- Add surrounding in Normal and Visual modes
-                delete = "gsd", -- Delete surrounding
-                find = "gsf", -- Find surrounding (to the right)
-                find_left = "gsF", -- Find surrounding (to the left)
-                highlight = "gsh", -- Highlight surrounding
-                replace = "gsr", -- Replace surrounding
+                add = "gsa",            -- Add surrounding in Normal and Visual modes
+                delete = "gsd",         -- Delete surrounding
+                find = "gsf",           -- Find surrounding (to the right)
+                find_left = "gsF",      -- Find surrounding (to the left)
+                highlight = "gsh",      -- Highlight surrounding
+                replace = "gsr",        -- Replace surrounding
                 update_n_lines = "gsn", -- Update `n_lines`
             },
         },
@@ -210,13 +210,13 @@ return {
             end, { desc = "Previous todo comment" }),
 
             vim.keymap.set("n", "]t", function()
-                require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
+                require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
             end, { desc = "Next error/warning todo comment" })
 
         },
         keys = {
-            { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todo" },
-            { "<leader>sT", function () Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
+            { "<leader>st", function() Snacks.picker.todo_comments() end,                                          desc = "Todo" },
+            { "<leader>sT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
         },
     },
     { "nvim-tree/nvim-web-devicons", opts = {} },
@@ -225,7 +225,7 @@ return {
     {
         'mrcjkb/rustaceanvim',
         version = '^6', -- Recommended
-        lazy = false, -- This plugin is already lazy
+        lazy = false,   -- This plugin is already lazy
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
@@ -262,9 +262,9 @@ return {
         opts = {
             formatters_by_ft = {
                 lua = { "stylua" },
-                python = { "ruff" },
+                python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
                 bash = { "shfmt" },
-                shell = { "shfmt" },
+                shell = { "shfmt", "shellcheck" },
                 rust = { "rustfmt" },
             },
             default_format_opts = {
