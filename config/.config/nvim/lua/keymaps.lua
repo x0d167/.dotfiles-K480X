@@ -7,6 +7,10 @@ map({ "n", "i", "v", "x" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 -- Scroll and center
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
+map("n", "{", "{zz", opts)
+map("n", "}", "}zz", opts)
+map("n", "(", "(zz", opts)
+map("n", ")", ")zz", opts)
 
 -- Navigate windows
 map("n", "<C-h>", "<C-w>h", { desc = "Left Window" })
@@ -23,7 +27,7 @@ map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
 -- Do not copy single char deletions to register
-map("n", "x", '"_x', opts)
+-- map("n", "x", '"_x', opts)
 
 -- Center after search
 map("n", "n", "nzzzv", opts)

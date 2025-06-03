@@ -19,5 +19,6 @@ wayshot -s "$region" -f "$fullpath"
 wl-copy < "$fullpath"
 
 # Open in viewer
-imv "$fullpath" & disown
+# imv "$fullpath" & disown
+gwenview "$fullpath" & disown
 

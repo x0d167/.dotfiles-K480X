@@ -9,10 +9,14 @@ $TERMINAL --class floating-update -e bash -c '
         cat "$summary"
         echo
         read -p "Run full update? (y/N) " ans
-        [[ $ans =~ ^[Yy]$ ]] && paru -Syu
+        if [[ $ans =~ ^[Yy]$ ]]; then
+            paru -Syu
+        fi
+        ~/.config/K480X/scripts/system/check-updates.sh
     else
         echo "No update summary found."
-        read -p "Press enter to exit."
     fi
+    echo
+    read -p "Press enter to close."
 '
 

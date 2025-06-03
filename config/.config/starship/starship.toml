@@ -6,15 +6,15 @@ palette = 'colors'
 
 [palettes.colors]
 mustard = '#af8700' # example
-color1 = '#82d3e2'
-color2 = '#00363e'
-color3 = '#bfc8ca'
-color4 = '#1b2122'
-color5 = '#00363e'
-color6 = '#0e1416'
-color7 = '#0e1416'
-color8 = '#82d3e2'
-color9 = '#bbc5eb'
+color1 = '#e4b7f3'
+color2 = '#442253'
+color3 = '#cec3cd'
+color4 = '#231e23'
+color5 = '#442253'
+color6 = '#161217'
+color7 = '#161217'
+color8 = '#e4b7f3'
+color9 = '#f5b7b5'
 
 # Prompt symbols 
 [character]
@@ -31,12 +31,10 @@ format = "[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 
 [directory.substitutions]
 "docs" = "󰈙 "
 "downloads" = " "
-"music" = " "
+"music" = " "
 "pictures" = " "
 "videos" = " "
-"books" = " "
-"dev" = ""
-".config" = ""
+"dev" = " "
 
 [git_branch]
 format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "

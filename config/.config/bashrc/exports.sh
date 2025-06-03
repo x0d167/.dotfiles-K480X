@@ -14,6 +14,14 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DOWNLOAD_DIR="$HOME/tmp/downloads"
+export XDG_DOCUMENTS_DIR="$HOME/docs"
+export XDG_MUSIC_DIR="$HOME/media/music"
+export XDG_PICTURES_DIR="$HOME/media/pictures"
+export XDG_VIDEOS_DIR="$HOME/media/videos"
+export XDG_DESKTOP_DIR="$HOME/archive/desktop"
+export XDG_TEMPLATES_DIR="$HOME/archive/templates"
+export XDG_PUBLICSHARE_DIR="$HOME/tmp/public"
 
 # Syntax/color highlighting for man pages
 export MANPAGER='nvim +Man!'
@@ -70,3 +78,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export LIBVIRT_DEFAULT_URI='qemu:///system'
 export AURDEST="$HOME/.cache/aurutils"
 export AURREPO=k480x
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/operator/.lmstudio/bin"
+# End of LM Studio CLI section
+

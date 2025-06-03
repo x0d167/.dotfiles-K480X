@@ -1,4 +1,5 @@
 return {
+
     -- Plugin Manager
     { "folke/lazy.nvim",             version = false },
 
@@ -32,6 +33,7 @@ return {
         event = "VeryLazy",
         opts = {},
     },
+
     -- quick navigation
     {
         "folke/flash.nvim",
@@ -40,13 +42,14 @@ return {
         opts = {},
         -- stylua: ignore
         keys = {
-            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "<M-f>", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "<M-F>", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
             { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
             { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
             { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },
     },
+
     {
         "projekt0n/github-nvim-theme",
         name = "github-theme",
@@ -71,6 +74,7 @@ return {
             ]])
         end,
     },
+
     {
         -- High-performance color highlighter
         "norcalli/nvim-colorizer.lua",
@@ -101,6 +105,7 @@ return {
             },
         },
     },
+
     {
         "echasnovski/mini.surround",
         event = "VeryLazy",
@@ -116,6 +121,7 @@ return {
             },
         },
     },
+
     {
         "folke/trouble.nvim",
         cmd = { "Trouble" },
@@ -163,6 +169,7 @@ return {
             },
         },
     },
+
     {
         "akinsho/toggleterm.nvim",
         version = "*",
@@ -196,6 +203,7 @@ return {
             })
         end,
     },
+
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -219,6 +227,7 @@ return {
             { "<leader>sT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
         },
     },
+
     { "nvim-tree/nvim-web-devicons", opts = {} },
 
     -- Aspirational...
@@ -227,6 +236,7 @@ return {
         version = '^6', -- Recommended
         lazy = false,   -- This plugin is already lazy
     },
+
     {
         'MeanderingProgrammer/render-markdown.nvim',
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
@@ -236,6 +246,7 @@ return {
             completions = { lsp = { enabled = true } },
         },
     },
+
     -- git gud @ vim motions...
     {
         "m4xshen/hardtime.nvim",
@@ -243,6 +254,7 @@ return {
         dependencies = { "MunifTanjim/nui.nvim" },
         opts = {},
     },
+
     {
         'stevearc/conform.nvim',
         event = { "BufWritePre" },
@@ -281,4 +293,9 @@ return {
             vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
         end,
     },
+
+    {
+        'jeffkreeftmeijer/vim-numbertoggle',
+    },
+
 }

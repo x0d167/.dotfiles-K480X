@@ -18,7 +18,7 @@
             "default": ""
         },
         "persistent-workspaces": {
-            "*": [1,2,3,4,5]
+            //"*": [1,2,3,4,5]
         }
     },
     // Hyprland Window
@@ -93,6 +93,19 @@
         "exec": "~/.config/K480X/scripts/hypr/hypridle.sh status",
         "on-click": "~/.config/K480X/scripts/hypr/hypridle.sh toggle"
     },
+    // Cliphist
+    "custom/cliphist": {
+        "format": "  ",
+        "on-click": "sleep 0.1 && ~/.config/K480X/scripts/utils/cliphist.sh",
+        "on-click-right": "sleep 0.1 && ~/.config/K480X/scripts/utils/cliphist.sh d",
+        "on-click-middle": "sleep 0.1 && ~/.config/K480X/scripts/utils/cliphist.sh w",
+        "tooltip-format": "Left: Open clipboard Manager\nRight: Delete an entry\nMiddle: Clear list"
+    },
+    // Custom/hyprstuff
+    "custom/hyprstuff": {
+        "format": "  ",
+        "tooltip": false
+    },
     // Group Tools
     "group/tools": {
     "orientation": "inherit",
@@ -101,7 +114,7 @@
         "children-class": "not-memory",
         "transition-left-to-right": false
         },
-        "modules": ["custom/hyprshade", "custom/hypridle"]
+        "modules": ["custom/hyprstuff", "custom/hyprshade", "custom/hypridle", "custom/cliphist"]
     },
     "pulseaudio": {
         "format": "{icon}   {volume}%",
@@ -149,6 +162,11 @@
         "format-critical": " {temperatureC}",
         "format": " {temperatureC}°C"
     },
+    // Custom system
+    "custom/system": {
+        "format": "  ",
+        "tooltip": false
+    },
     // Group Hardware
     "group/hardware":{
     "orientation": "inherit",
@@ -156,7 +174,12 @@
         "transition-duration": 300,
         "children-class": "not-memory",
         "transition-left-to-right": false},
-       "modules": ["cpu", "memory", "temperature"]
+       "modules": ["custom/system","cpu", "memory", "temperature"]
+    },
+    "custom/battery": {
+        "exec": "~/.config/K480X/scripts/utils/battery-average.sh",
+        "interval": 30,
+        "tooltip": false
     },
     "battery#bat0": {
         "bat": "BAT0",
@@ -184,15 +207,26 @@
         "format-alt": "{time}  {icon}",
         "format-icons": ["", "", "", "", ""]
     },
+    //group batteries together in dual battery environment
+    "group/batteries": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-battery",
+            "transition-left-to-right": false
+        },
+        "modules": ["custom/battery", "battery#bat0", "battery#bat1"]
+    },
     // System tray
     "tray": {
         "icon-size": 21,
         "spacing": 10
     },
     "clock": {
-        "format": "{:%I:%M %p | %e %B} ",
+        "format": "  {:%I:%M %p | %e %B} ",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        //"format-alt": "{:%Y-%m-%d}",
+        "on-click": "~/.config/K480X/scripts/utils/launch_calendar.sh"
     },
     // Swaync
     "custom/notification": {

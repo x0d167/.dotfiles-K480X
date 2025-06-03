@@ -31,12 +31,10 @@ format = "[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 
 [directory.substitutions]
 "docs" = "󰈙 "
 "downloads" = " "
-"music" = " "
+"music" = " "
 "pictures" = " "
 "videos" = " "
-"books" = " "
-"dev" = ""
-".config" = ""
+"dev" = " "
 
 [git_branch]
 format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "

@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-# Trigger a lightweight sync
-paru -Sy --quiet > /dev/null
 
-# Get update counts
-REPO_UPDATES=$(paru -Qu --repo 2>/dev/null)
+# Get update counts using safer tools
+REPO_UPDATES=$(checkupdates 2>/dev/null)
 AUR_UPDATES=$(paru -Qu --aur 2>/dev/null)
 
 REPO_COUNT=$(echo "$REPO_UPDATES" | grep -c '^[^ ]')

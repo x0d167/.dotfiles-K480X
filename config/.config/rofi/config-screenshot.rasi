@@ -5,7 +5,6 @@
 # |  _ < (_) |  _| | 
 # |_| \_\___/|_| |_| 
 #                    
-# by Stephan Raabe (2023) 
 # ----------------------------------------------------- 
 */
 
@@ -25,6 +24,8 @@ configuration {
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     window-format:              "{w} · {c} · {t}";
+    kb-row-up:                  "Up,k";
+    kb-row-down:                "Down,j";
     
 }
 

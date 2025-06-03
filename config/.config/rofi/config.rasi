@@ -20,6 +20,8 @@ configuration {
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     window-format:              "{w} · {c} · {t}";
+    kb-row-up:                  "Up,k";
+    kb-row-down:                "Down,j";
     
 }
 
