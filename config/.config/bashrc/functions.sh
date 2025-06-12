@@ -71,6 +71,16 @@ __fuzzy_history() {
 
 bind -x '"\C-r": __fuzzy_history'
 
+aliasf() {
+    local selection
+    selection=$(alias | fzf --prompt="Alias > " | sed -E "s/^alias ([^=]+)='(.*)'/\2/")
+    if [[ -n "$selection" ]]; then
+        read -e -i "$selection" _cmd
+        eval "$_cmd"
+    fi
+}
+
+bind -x '"\ea": aliasf'
 # ============================
 # 📥 Download Helpers
 # ============================
@@ -374,22 +384,41 @@ fwstatus() {
 }
 
 pentestmode() {
-  _log_fw "Entering pentest mode..."
+  _log_fw "Entering pentest mode (temporary)..."
   for iface in $(nmcli -t -f DEVICE,TYPE device status | awk -F: '$2~/^(wifi|ethernet|tun|vpn)$/ {print $1}'); do
-    _log_fw " → $iface → pentest"
-    sudo firewall-cmd --zone=pentest --change-interface="$iface" --permanent
+    _log_fw " → $iface → pentest (temporary)"
+    sudo firewall-cmd --zone=pentest --change-interface="$iface"
   done
   sudo firewall-cmd --reload
+  notify-send -a "Firewall" -u normal "🛡 Entered Pentest Mode (temporary)"
   fwstatus
 }
 
 normalmode() {
-  _log_fw "Reverting to FedoraWorkstation zone..."
+  _log_fw "Reverting to FedoraWorkstation zone (permanent)..."
   for iface in $(nmcli -t -f DEVICE,TYPE device status | awk -F: '$2~/^(wifi|ethernet|tun|vpn)$/ {print $1}'); do
-    _log_fw " → $iface → FedoraWorkstation"
+    _log_fw " → $iface → FedoraWorkstation (permanent)"
     sudo firewall-cmd --zone=FedoraWorkstation --change-interface="$iface" --permanent
   done
   sudo firewall-cmd --reload
+  notify-send -a "Firewall" -u low "🔁 Reverted to FedoraWorkstation (persistent)"
+  fwstatus
+}
+
+ssh_on() {
+  _log_fw "Temporarily enabling SSH access..."
+  for iface in $(nmcli -t -f DEVICE,TYPE device status | awk -F: '$2~/^(wifi|ethernet)$/ {print $1}'); do
+    _log_fw " → $iface → ssh-allowed (temporary)"
+    sudo firewall-cmd --zone=ssh-allowed --change-interface="$iface"
+  done
+  notify-send -a "Firewall" -u normal "🔓 SSH access ENABLED (temporary)"
+  fwstatus
+}
+
+ssh_off() {
+  _log_fw "Reverting all temporary firewall changes..."
+  sudo firewall-cmd --reload
+  notify-send -a "Firewall" -u low "🔒 SSH access DISABLED (reset to permanent rules)"
   fwstatus
 }
 

@@ -2,6 +2,8 @@
 
 # General aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias aliasgrep='alias | grep -i'
+alias grep='grep --color=auto'
 
 alias ebrc='nvim ~/.bashrc'
 alias hlp='less ~/.bashrc_help'
@@ -112,3 +114,15 @@ alias sha1='openssl sha1'
 alias clickpaste='sleep 3; xdotool type "$(xclip -o -selection clipboard)"'
 alias kssh="kitty +kitten ssh"
 alias docker-clean='docker container prune -f; docker image prune -f; docker network prune -f; docker volume prune -f'
+
+# Arch specific
+alias paci='sudo pacman -S'         # install
+alias pacu='sudo pacman -Syu'       # full system upgrade
+alias pacr='sudo pacman -Rns'       # remove with cleanup
+alias pacs='pacman -Ss'             # search repos
+alias pacq='pacman -Qs'             # search installed
+alias pacl='pacman -Qi'             # info about installed package
+alias pacf='pacman -Ql'             # list files from package
+alias paco='pacman -Qo'             # who owns this file
+alias pacclean='sudo pacman -Rns $(pacman -Qdtq)'  # remove orphans
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=ProtonVPN App GUI
+After=network-online.target gnome-keyring-daemon.service
+Wants=gnome-keyring-daemon.service
+
+[Service]
+ExecStart=/usr/bin/protonvpn-app
+Restart=on-failure
+RestartSec=5
+Environment=XDG_CURRENT_DESKTOP=Hyprland
+
+[Install]
+WantedBy=default.target

@@ -63,14 +63,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# grep color fallback
-if command -v rg &>/dev/null; then
-  alias grep='rg'
-else
-  alias grep='grep --color=auto'
-fi
-
-
 # PATH additions
 export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bin:$HOME/.local/share/flatpak/exports/bin:$HOME/.cargo/bin/hx"
 export PATH="$PATH:/opt/nvim/"
@@ -78,6 +70,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export LIBVIRT_DEFAULT_URI='qemu:///system'
 export AURDEST="$HOME/.cache/aurutils"
 export AURREPO=k480x
+. "$HOME/.cargo/env"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/operator/.lmstudio/bin"
 # End of LM Studio CLI section

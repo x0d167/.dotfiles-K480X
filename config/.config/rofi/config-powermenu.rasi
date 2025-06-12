@@ -1,0 +1,164 @@
+/**
+ *
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
+
+
+/*****----- Configuration -----*****/
+configuration {
+    show-icons:                 true;
+}
+
+/* ---- Load font ---- */
+@import "~/.config/K480X/settings/rofi-font.rasi"
+
+/* ---- Load colors ---- */
+@theme "~/.config/rofi/colors.rasi"
+
+/* ---- Load wallpaper ---- */
+@import "~/.config/K480X/cache/current_wallpaper.rasi"
+
+/* ---- Load border width ---- */
+@import "~/.config/K480X/settings/rofi-border.rasi"
+
+/* ---- Load border radius ---- */
+@import "~/.config/K480X/settings/rofi-border-radius.rasi"
+
+/*****----- Global Properties -----*****/
+* {
+    font:                        "JetBrainsMono Nerd Font Mono";
+    icon-theme:                  "kora";
+    background:                  rgba(0,0,1,0.5);
+    background-alt:              #2D1E23;
+    foreground:                  @on-surface;
+    selected:                    #426647;
+    active:                      #2E3F34;
+    urgent:                      #D08261;
+    color11: @primary;
+    color5: @on-primary-fixed;
+}
+
+/*
+USE_BUTTONS=YES
+*/
+
+/*****----- Main Window -----*****/
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    enabled:                     true;
+    width:                       800px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    padding:                     0px;
+    border:                      @border-width;
+    border-radius:               @border-radius;
+    border-color:                @color11;
+    cursor:                      "default";
+    background-color:            transparent;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+    background-color:            transparent;
+    orientation:                 horizontal;
+    children:                    [ "imagebox", "listview" ];
+    background-image:            url("~/.config/K480X/cache/blurred_wallpaper.png", width);
+}
+
+/*****----- Imagebox -----*****/
+imagebox {
+    spacing:                     0px;
+    padding:                     30px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "dummy", "message" ];
+}
+
+/*****----- User -----*****/
+userimage {
+    margin:                      0px 0px;
+    border:                      10px;
+    border-radius:               10px;
+    border-color:                @color5;
+    background-color:            transparent;
+    background-image:            url("~/.config/rofi/images/e.jpg", height);
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            transparent;
+    text-color:                  @background;
+    children:                    [ "dummy", "prompt", "dummy"];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+prompt {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+/*****----- Message -----*****/
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     15px;
+    border-radius:               10px;
+    background-color:            @background;
+    text-color:                  @foreground;
+}
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     3;
+    lines:                       2;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     30px;
+    margin:                      30px;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+    enabled:                     true;
+    padding:                     18px 10px;
+    border-radius:               20px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+element selected.normal {
+    background-color:            @color5;
+    text-color:                  @foreground;
+}

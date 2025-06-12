@@ -21,7 +21,7 @@
         "bluetooth",
         // "network",
         "group/tools",
-        "group/hardware",
+        //"group/hardware",
         "group/batteries",
         //"battery#bat0",
         //"battery#bat1",

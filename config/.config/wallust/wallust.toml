@@ -47,3 +47,4 @@ palette = "dark"
 # ¡ If either one is a directory, then both SHOULD be one. !
 # zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
 kitty = { template = 'kitty-colors.conf', target = '~/.config/kitty/colors-wallust.conf' }
+ghostty = { template = 'ghostty-colors', target = '~/.config/ghostty/themes/wallust' }

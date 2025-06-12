@@ -41,7 +41,7 @@
     // Power Menu
     "custom/exit": {
         "format": "",
-        "on-click": "~/.config/K480X/scripts/wlogout/toggle_wlogout.sh",
+        "on-click": "~/.config/K480X/scripts/utils/rofi-powermenu.sh",
         "on-click-right": "hyprlock",
         "tooltip-format": "Left: Power menu\nRight: Lock screen"
     },
@@ -83,6 +83,14 @@
         // "ignored-players": ["firefox"]
         "max-length": 30,
     },
+    // Built in idle_inhibitor
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "deactivated": "",
+            "activated": ""
+        }
+    },
     // Hypridle inhibitor
     "custom/hypridle": {
         "format": "",
@@ -114,7 +122,7 @@
         "children-class": "not-memory",
         "transition-left-to-right": false
         },
-        "modules": ["custom/hyprstuff", "custom/hyprshade", "custom/hypridle", "custom/cliphist"]
+        "modules": ["custom/hyprstuff", "custom/hyprshade", "idle_inhibitor", "custom/cliphist"]
     },
     "pulseaudio": {
         "format": "{icon}   {volume}%",
@@ -259,7 +267,7 @@
         "format-disabled": "",
         "format-off": "",
         "interval": 30,
-        "on-click": "blueman-manager",
+        "on-click": "blueberry",
         "format-no-controller": "",
         "tooltip": true
     },
