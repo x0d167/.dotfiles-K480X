@@ -1,7 +1,8 @@
 # 🔧 dotfiles-K480X
 
 Custom dotfiles for my Arch-based ThinkPad T480 system — codename: **KRS-K480X**.  
-This setup is tuned for speed, clarity, customization, and eventual world domination.
+This setup is tuned for speed, clarity, customization, and ~eventual world domination~ main machine
+stolen, now just used for work, so no time for shenanigans lol.
 
 ---
 
@@ -34,7 +35,7 @@ Everything is managed using **GNU Stow** to cleanly symlink into `~`.
 
 ## 📦 Managed Tools
 
-* `Hyprland` – Wayland window manager
+* `Hyprland` – Wayland ~window manager~ Compositor
 * `Waybar` – Status bar
 * `Rofi` – Application launcher
 * `Swaync` – Notifications
@@ -42,7 +43,6 @@ Everything is managed using **GNU Stow** to cleanly symlink into `~`.
 * `Neovim` – Editor
 * `Matugen` – Dynamic theming
 * `Fastfetch` – Eye candy
-* `Atuin` – Shell history, synced and encrypted
 * `wlogout` – GUI logout screen
 * `Yazi` – TUI file manager
 * `etc` – Work in progress
@@ -55,13 +55,6 @@ Everything is managed using **GNU Stow** to cleanly symlink into `~`.
 * **Custom**, but maintainable
 * **Scripted**, not brittle
 * Everything should feel like it belongs in a cyberdeck
-
----
-
-## 📎 Misc
-
-This repo is not intended to be portable. It's personal, unapologetically tuned, and not beginner-oriented.
-If you're looking to fork, do it with caution and taste.
 
 ---
 
