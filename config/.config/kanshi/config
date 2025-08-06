@@ -1,0 +1,9 @@
+profile home-dock {
+    output eDP-1 disable
+    output "LG Electronics LG ULTRAGEAR+ 312NTDVCQ138" enable mode 3440x1440@119.99100Hz position 0,0 scale 1
+}
+
+profile laptop {
+    output eDP-1 enable mode 1920x1080@60.00800Hz scale 1
+}
+

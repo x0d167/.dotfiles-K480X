@@ -6,4 +6,4 @@
 for part in init.sh exports.sh aliases.sh prompt.sh functions.sh; do
   [ -f "$HOME/.config/bashrc/$part" ] && source "$HOME/.config/bashrc/$part"
 done
-
+. "/home/operator/.local/share/cargo/env"

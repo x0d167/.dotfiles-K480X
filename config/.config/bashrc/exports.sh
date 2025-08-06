@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # History behavior
-export HISTFILESIZE=10000
-export HISTSIZE=500
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
 export HISTTIMEFORMAT="%F %T"
 export HISTCONTROL=erasedups:ignoredups:ignorespace
 shopt -s checkwinsize
@@ -23,6 +23,17 @@ export XDG_DESKTOP_DIR="$HOME/archive/desktop"
 export XDG_TEMPLATES_DIR="$HOME/archive/templates"
 export XDG_PUBLICSHARE_DIR="$HOME/tmp/public"
 
+# Tool-specific env vars
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOBIN="$GOPATH/bin"
+export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export FFMPEG_DATADIR="$XDG_CONFIG_HOME/ffmpeg"
+export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
+export OPENAUDIBLE_HOME="$XDG_CONFIG_HOME/openaudible"
+
 # Syntax/color highlighting for man pages
 export MANPAGER='nvim +Man!'
 
@@ -38,8 +49,6 @@ fi
 if command -v nvim &>/dev/null; then
   export EDITOR=nvim
   export VISUAL=nvim
-  alias vim='nvim'
-  alias vi='nvim'
   alias nv='nvim'
   alias svi='sudo nvim'
   alias vis='nvim "+set si"'
@@ -70,7 +79,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export LIBVIRT_DEFAULT_URI='qemu:///system'
 export AURDEST="$HOME/.cache/aurutils"
 export AURREPO=k480x
-. "$HOME/.cargo/env"
+. "$CARGO_HOME/env"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/operator/.lmstudio/bin"
 # End of LM Studio CLI section

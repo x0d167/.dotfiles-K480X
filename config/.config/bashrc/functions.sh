@@ -285,6 +285,40 @@ inspect() {
   fi
 }
 
+pkgf() {
+    local aur_helper
+    if command -v paru &>/dev/null; then
+        aur_helper="paru"
+    elif command -v yay &>/dev/null; then
+        aur_helper="yay"
+    else
+        echo "No AUR helper (paru or yay) found." >&2
+        return 1
+    fi
+
+    "$aur_helper" -Slq \
+        | fzf --multi \
+              --preview "$aur_helper -Sii {1}" \
+              --preview-window=down:75% \
+        | xargs -ro "$aur_helper" -S
+}
+
+pkgfi() {
+    local aur_helper
+    if command -v paru &>/dev/null; then
+        aur_helper="paru"
+    elif command -v yay &>/dev/null; then
+        aur_helper="yay"
+    else
+        echo "No AUR helper (paru or yay) found." >&2
+        return 1
+    fi
+
+    "$aur_helper" -Qq \
+        | fzf --multi \
+              --preview "$aur_helper -Qi {1}" \
+              --preview-window=down:75%
+}
 # ============================
 # 🔎 Search / Navigation
 # ============================
@@ -450,7 +484,11 @@ index() {
     "pacswap    - ↔️ Replace a package"
     "pentestmode - 🛡️ Harden interfaces"
     "pilfer     - 📥 Download helper"
+    "pkgf       - 🧰 Search global Arch/AUR packages with preview + install"
+    "pkgfi      - 📦 FZF viewer for installed Arch/AUR packages"
     "pwdtail    - 📍 Show last 2 path segments"
+    "ssh_on     - 🔓 Temporarily enable SSH access via firewall zone"
+    "ssh_off    - 🔒 Disable SSH access, revert firewall to permanent rules"
     "touchy     - 🛠️ Touch with mkdir"
     "up         - ⬆️ Go up N directories"
     "ver        - 🧠 Show version info"

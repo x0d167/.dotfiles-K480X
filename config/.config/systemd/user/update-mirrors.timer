@@ -1,0 +1,11 @@
+# ~/.config/systemd/user/update-mirrors.timer
+[Unit]
+Description=Run update-mirrors weekly
+
+[Timer]
+OnCalendar=Sun 03:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

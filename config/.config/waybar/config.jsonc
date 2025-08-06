@@ -13,25 +13,21 @@
     ],
     "modules-center": [
         "clock",
-        "custom/updates"
+        "privacy"
     ],
     "modules-right": [
-        // "custom/hypridle",
-        "pulseaudio",
-        "bluetooth",
-        // "network",
-        "group/tools",
-        //"group/hardware",
-        "group/batteries",
-        //"battery#bat0",
-        //"battery#bat1",
+        // "pulseaudio",
+        // "bluetooth",
+        // "custom/cliphist",
+        // "tray",
+        "custom/updates",
         "custom/notification",
-        "custom/exit",
-        "tray"
+        "group/tools",
+        "group/batteries"
     ],
     //Modules configuration
 
     "include": [
 		"~/.config/waybar/modules.json"
 	]
-}
+},

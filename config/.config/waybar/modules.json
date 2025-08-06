@@ -5,20 +5,41 @@
         "tooltip-format": "btw"
     },
     // Workspaces
+//    "hyprland/workspaces": {
+//        "on-scroll-up": "hyprctl dispatch workspace r-1",
+//        "on-scroll-down": "hyprctl dispatch workspace r+1",
+//        "on-click": "activate",
+//        "active-only": false,
+//        "all-outputs": true,
+//        "format": "{}",
+//        "format-icons": {
+//            "urgent": "",
+//            "active": "",
+//            "default": ""
+//        },
+//        "persistent-workspaces": {
+//            //"*": [1,2,3,4,5]
+//        }
+//    },
     "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace r-1",
         "on-scroll-down": "hyprctl dispatch workspace r+1",
         "on-click": "activate",
         "active-only": false,
         "all-outputs": true,
-        "format": "{}",
+        "format": "{icon}",
         "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "active": "",
+            "default": "" 
         },
         "persistent-workspaces": {
-            //"*": [1,2,3,4,5]
+            "*": [ 1, 2, 3, 4, 5 ]
         }
     },
     // Hyprland Window
@@ -31,19 +52,6 @@
             "(.*) - Zen": "$1"
         },
         "separate-outputs": true
-    },
-    // Wallpaper
-    "custom/wallpaper": {
-        "format": "",
-        "on-click": "bash -c waypaper &",
-        "tooltip-format": "Left: Select a wallpaper\nRight: Select wallpaper effect"
-    },
-    // Power Menu
-    "custom/exit": {
-        "format": "",
-        "on-click": "~/.config/K480X/scripts/utils/rofi-powermenu.sh",
-        "on-click-right": "hyprlock",
-        "tooltip-format": "Left: Power menu\nRight: Lock screen"
     },
     // Hyprshade
     "custom/hyprshade": {
@@ -60,9 +68,6 @@
         "on-click": "playerctl previous",
         "on-click-right": "playerctl next",
         "scroll-step": 5.0,
-        "on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
-        "on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
-        "smooth-scrolling-threshold": 1,
         "tooltip": true,
         "tooltip-format": "{status_icon} {dynamic}\nLeft Click: previous\nMid Click: Pause\nRight Click: Next",
         "player-icons": {
@@ -73,7 +78,7 @@
             "mopidy": "",
             "mpv": "󰐹",
             "spotify": "",
-            "vlc": "󰕼",
+            "vlc": "󰕼"
         },
         "status-icons": {
             "paused": "󰐎",
@@ -90,16 +95,6 @@
             "deactivated": "",
             "activated": ""
         }
-    },
-    // Hypridle inhibitor
-    "custom/hypridle": {
-        "format": "",
-        "return-type": "json",
-        "escape": true,
-        "exec-on-event": true,
-        "interval": 60,
-        "exec": "~/.config/K480X/scripts/hypr/hypridle.sh status",
-        "on-click": "~/.config/K480X/scripts/hypr/hypridle.sh toggle"
     },
     // Cliphist
     "custom/cliphist": {
@@ -122,7 +117,7 @@
         "children-class": "not-memory",
         "transition-left-to-right": false
         },
-        "modules": ["custom/hyprstuff", "custom/hyprshade", "idle_inhibitor", "custom/cliphist"]
+        "modules": ["custom/hyprstuff", "pulseaudio", "bluetooth", "custom/cliphist", "tray"]
     },
     "pulseaudio": {
         "format": "{icon}   {volume}%",
@@ -147,7 +142,7 @@
         "format-wifi": " {essid} ({signalStrength}%)",
         "format-ethernet": "  {ifname}",
         "format-disconnected": "Disconnected ⚠",
-        "tooltip-format": " {ifname} via {gwaddri}",
+        "tooltip-format": " {ifname} via {gwaddr}",
         "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
         "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
         "tooltip-format-disconnected": "Disconnected",
@@ -187,7 +182,8 @@
     "custom/battery": {
         "exec": "~/.config/K480X/scripts/utils/battery-average.sh",
         "interval": 30,
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "tlpui"
     },
     "battery#bat0": {
         "bat": "BAT0",
@@ -231,10 +227,29 @@
         "spacing": 10
     },
     "clock": {
-        "format": "  {:%I:%M %p | %e %B} ",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        //"format-alt": "{:%Y-%m-%d}",
-        "on-click": "~/.config/K480X/scripts/utils/launch_calendar.sh"
+        "format": "{:%H:%M}  ",
+        "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "tz_up",
+            "on-scroll-down": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
     // Swaync
     "custom/notification": {
@@ -267,7 +282,7 @@
         "format-disabled": "",
         "format-off": "",
         "interval": 30,
-        "on-click": "blueberry",
+        "on-click": "blueman-manager",
         "format-no-controller": "",
         "tooltip": true
     },
@@ -306,4 +321,26 @@
         ],
         "scroll-step": 1
     },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
+    }
 }

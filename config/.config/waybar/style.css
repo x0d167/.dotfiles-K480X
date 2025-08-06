@@ -21,8 +21,8 @@ window#waybar {
 .modules-right
 {
     /* background: @primary_container; */
-    background: transparent;
-    color: @on_primary_container;
+    background: @blur_background;
+    color: @on_surface;
     margin: 5px 10px;
     padding: 0 5px;
     /* border: 2px solid @primary; */
@@ -30,6 +30,7 @@ window#waybar {
 }
 .modules-left {
     padding: 0;
+    background: @blur_background;
 }
 .modules-center {
     padding: 0 10px;
@@ -64,7 +65,7 @@ window#waybar {
     border-radius: 15px;
 }
 
-#clock:hover,
+/* #clock:hover, */
 #battery:hover {
     background: @surface_container_low;
     color: @on_primary_container;
@@ -86,6 +87,7 @@ window#waybar {
 #scratchpad:hover,
 #power-profiles-daemon:hover,
 #language:hover,
+#bluetooth:hover,
 #mpd:hover {
     background: rgba(26, 27, 38, 0.9);
 }
@@ -98,19 +100,19 @@ window#waybar {
     feather;
   font-weight: 900;
   font-size: 13pt;
-  color: @on_surface;
+  color: @on_primary_container;
   border:none;
   border-radius: 15px;
 }
 
 #workspaces button.active {
-    background: @surface_container_low;
-    color: #cdd6f4;
+    background: transparent;
+    color: @on_primary_container;
     font-weight: bold;
 }
 
 #workspaces button:hover {
-  background: @surface_container_low;
+  background: transparent;
   color: #cdd6f4;
   box-shadow: none;
 }
@@ -122,20 +124,22 @@ window#waybar {
     transition: color .5s;
 }
 #custom-arch:hover {
-    color: @primary;
+    color: @on_primary_container;
 }
 #custom-updates {
   padding: 0 8px;
+  background: transparent;
   transition: color 0.3s ease;
 }
 
 #custom-updates.no-updates {
-  color: rgba(255, 255, 255, 0.1);  /* barely visible / transparent */
+  color: rgba(255, 255, 255, 0);  /* barely visible / transparent */
 }
 
 #custom-updates.has-updates {
   color: #98c379;  /* bright green, matches other themes */
-  background: @surface_container_low;
+  /* background: @surface_container_low; */
+  background: transparent;
 
 }
 

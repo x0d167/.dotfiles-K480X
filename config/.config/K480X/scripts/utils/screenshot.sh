@@ -1,24 +1,35 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Screenshot path & name format
-dir="$HOME/media/pictures/screenshots"
-filename="wayshot-$(date '+%Y_%m_%d-%H_%M_%S').png"
-fullpath="$dir/$filename"
+SCREENSHOT_DIR="$HOME/media/pictures/screenshots"
+FILENAME="screenshot-$(date '+%Y-%m-%d_%H-%M-%S').png"
+FULLPATH="$SCREENSHOT_DIR/$FILENAME"
 
-# Ensure directory exists
-mkdir -p "$dir"
+mkdir -p "$SCREENSHOT_DIR"
 
-# Get region via slurp
-region=$(slurp)
-[ -z "$region" ] && exit 1  # cancel if no region selected
+# First menu
+option_now="Take Screenshot Now"
+option_delay="Take Screenshot After Delay"
+main_choice=$(echo -e "$option_now\n$option_delay" | rofi -dmenu -config ~/.config/rofi/config-screenshot.rasi -i -no-show-icons -l 2 -width 30 -p "Screenshot")
 
-# Take screenshot
-wayshot -s "$region" -f "$fullpath"
+case "$main_choice" in
+    "$option_now")
+        delay=0
+        ;;
+    "$option_delay")
+        # Delay menu
+        delay_choice=$(echo -e "3\n5\n10\n20" | rofi -dmenu -config ~/.config/rofi/config-screenshot.rasi -i -no-show-icons -l 4 -width 30 -p "Delay (seconds)")
+        [ -z "$delay_choice" ] && exit 0
+        delay=$delay_choice
+        ;;
+    *)
+        exit 0
+        ;;
+esac
 
-# Copy to clipboard
-wl-copy < "$fullpath"
+# Optional delay with notify
+if (( delay > 0 )); then
+    notify-send "Screenshot in ${delay}s"
+    sleep "$delay"
+fi
 
-# Open in viewer
-# imv "$fullpath" & disown
-gwenview "$fullpath" & disown
-
+grim -g "$(slurp)" - | satty --filename - --output-filename "$FULLPATH"

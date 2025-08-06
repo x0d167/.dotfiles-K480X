@@ -1,0 +1,8 @@
+# ~/.config/systemd/user/update-mirrors.service
+[Unit]
+Description=Weekly Arch Mirrorlist Refresh
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/update-mirrors
+
