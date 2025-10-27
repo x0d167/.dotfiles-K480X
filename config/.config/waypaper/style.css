@@ -1,0 +1,14 @@
+/* ~/.config/matugen/templates/waypaper.css */
+window {
+  background-color: #111318;
+  color: #e1e2e9;
+}
+button {
+  background-color: #111318;
+  color: #e1e2e9;
+  border-radius: 8px;
+}
+button:hover {
+  background-color: #43474e;
+  color: #c4c6cf;
+}

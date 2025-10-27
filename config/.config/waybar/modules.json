@@ -27,20 +27,21 @@
         "on-click": "activate",
         "active-only": false,
         "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "6": "",
-            "active": "",
-            "default": "" 
-        },
-        "persistent-workspaces": {
-            "*": [ 1, 2, 3, 4, 5 ]
-        }
+        "show-only-active": true
+//        "format": "{icon}",
+//        "format-icons": {
+//            "1": "",
+//            "2": "",
+//            "3": "",
+//            "4": "",
+//            "5": "",
+//            "6": "",
+//            "active": "",
+//            "default": "" 
+//        },
+//        "persistent-workspaces": {
+//            "*": [ 1, 2, 3, 4, 5 ]
+//        }
     },
     // Hyprland Window
     "hyprland/window": {

@@ -11,6 +11,7 @@ setopt HIST_IGNORE_DUPS HIST_REDUCE_BLANKS HIST_SAVE_NO_DUPS
 setopt autocd extendedglob nomatch notify
 unsetopt beep
 setopt NO_FLOW_CONTROL
+setopt CORRECT
 
 # ------------------------------
 # ⌨️ Vi Mode

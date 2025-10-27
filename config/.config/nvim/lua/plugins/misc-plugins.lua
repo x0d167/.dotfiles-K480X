@@ -266,20 +266,36 @@ return {
 
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown", "vimwiki" },
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {
 			completions = { lsp = { enabled = true } },
+			render_modes = { "n" }, -- only render in normal mode
+			file_types = { "markdown", "vimwiki" },
+			heading = {
+				enabled = true,
+				sign = true,
+				position = "inline",
+				icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+				backgrounds = false, -- disable colored header backgrounds
+				-- Override highlight groups (simpler, uniform look)
+				highlight = false,
+				--             {
+				-- 	H1 = "Title",
+				-- 	H2 = "Title",
+				-- 	H3 = "Title",
+				-- 	H4 = "Title",
+				-- 	H5 = "Title",
+				-- 	H6 = "Title",
+				-- },
+				style = "simple", -- minimal visual mode
+			},
+			code = { enabled = true },
+			bullet = { enabled = true, icon = "•" },
+			quote = { enabled = true },
 		},
-	},
-
-	-- git gud @ vim motions...
-	{
-		"m4xshen/hardtime.nvim",
-		lazy = false,
-		dependencies = { "MunifTanjim/nui.nvim" },
-		opts = {},
 	},
 
 	{
@@ -325,18 +341,74 @@ return {
 		"jeffkreeftmeijer/vim-numbertoggle",
 	},
 	{
-		"nvim-orgmode/orgmode",
-		dependencies = {
-			"nvim-orgmode/org-bullets.nvim",
-			"saghen/blink.cmp",
-		},
-		event = "VeryLazy",
+		"supermaven-inc/supermaven-nvim",
 		config = function()
-			require("orgmode").setup({
-				org_agenda_files = "~/docs/orgfiles/**/*",
-				org_default_notes_file = "~/docs/orgfiles/refile.org",
-			})
-			require("org-bullets").setup()
+			require("supermaven-nvim").setup({})
 		end,
+	},
+	-- {
+	-- 	"echaya/neowiki.nvim",
+	-- 	opts = {
+	-- 		wiki_dirs = {
+	-- 			-- neowiki.nvim supports both absolute and tilde-expanded paths
+	-- 			{ name = "wiki", path = "~/docs/wiki/" },
+	-- 		},
+	-- 	},
+	-- 	keys = {
+	-- 		{ "<leader>ww", "<cmd>lua require('neowiki').open_wiki()<cr>", desc = "Open Wiki" },
+	-- 		{
+	-- 			"<leader>wW",
+	-- 			"<cmd>lua require('neowiki').open_wiki_floating()<cr>",
+	-- 			desc = "Open Wiki in Floating Window",
+	-- 		},
+	-- 		{ "<leader>wT", "<cmd>lua require('neowiki').open_wiki_new_tab()<cr>", desc = "Open Wiki in Tab" },
+	-- 	},
+	-- },
+	{
+		"vimwiki/vimwiki",
+		lazy = false,
+		event = "VeryLazy",
+		init = function()
+			vim.g.vimwiki_list = {
+				{
+					path = "~/docs/wiki/",
+					syntax = "markdown",
+					ext = ".md",
+					diary_rel_path = "logs", -- Use logs/ instead of diary/
+					diary_date_format = "%Y%m%d", -- filename format, e.g., 20251025.md
+				},
+			}
+			vim.g.vimwiki_global_ext = 0
+			vim.g.vimwiki_markdown_link_ext = 1 -- keep .md links for compatibility
+			vim.g.vimwiki_conceal_pre = 1
+			vim.g.vimwiki_auto_diary_index = 1
+			vim.cmd([[ 
+                augroup vimwiki_markdown_links
+                    autocmd!
+                    autocmd FileType markdown setlocal isfname+=@-@ isfname-==#
+                augroup END
+            ]])
+		end,
+		keys = {
+			{ "<leader>ww", "<cmd>VimwikiIndex<CR>", desc = "Open Vimwiki index" },
+			{ "<leader>wt", "<cmd>VimwikiTabIndex<CR>", desc = "Open Vimwiki in new tab" },
+			{ "<leader>ws", "<cmd>VimwikiUISelect<CR>", desc = "Select Vimwiki" },
+			-- fzf/snacks bindings
+			{
+				"<leader>wf",
+				function()
+					require("snacks").picker.files({ cwd = "~/docs/wiki" })
+				end,
+				desc = "Search Vimwiki files",
+			},
+		},
+	},
+	{ "plasticboy/vim-markdown", ft = "markdown", dependencies = { "godlygeek/tabular" } },
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
 	},
 }

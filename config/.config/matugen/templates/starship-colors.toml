@@ -1,6 +1,14 @@
-format = '''
-$directory$git_branch$custom$rust$python
-$character'''
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
 
 palette = 'colors'
 
@@ -16,37 +24,20 @@ color7 = '{{colors.surface.default.hex}}'
 color8 = '{{colors.primary.default.hex}}'
 color9 = '{{colors.tertiary.default.hex}}'
 
-# Prompt symbols 
 [character]
-# success_symbol = "[🞈](color9 bold)"
-success_symbol = "[ ❯❯](color9 bold)"
-# error_symbol = "[🞈](@{error})"
-error_symbol = "[ ❯❯](@{error})"
-# vicmd_symbol = "[🞈](#f9e2af)"
-vicmd_symbol = "[ ❯❯](#f9e2af)"
+success_symbol = "[❯❯](color9 bold)"
+error_symbol = "[❯❯](@{error})"
+vimcmd_symbol = "[❮❮](#f9e2af)"
 
 [directory]
-format = "[](fg:color1 bg:color4)[󰉋](bg:color1 fg:color2)[ ](fg:color1 bg:color4)[$path ](fg:color3 bg:color4)[ ](fg:color4)"
-
-[directory.substitutions]
-"docs" = "󰈙 "
-"downloads" = " "
-"music" = " "
-"pictures" = " "
-"videos" = " "
-"dev" = " "
+style = "blue"
 
 [git_branch]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $branch](fg:color3 bg:color4)[](fg:color4) "
-
-[custom.git_battlemap]
-command = "~/.config/starship/scripts/git_battlemap.sh"
-when = "git rev-parse --is-inside-work-tree 2>/dev/null"
-format = "[](fg:color4)[$output](fg:color3 bg:color4)[](fg:color4)"
-style = "bold"
+format = "[$branch]($style)"
+style = "bright-black"
 
 [git_status]
-format = "[](fg:color4)[$all_status$ahead_behind](fg:color3 bg:color4)[](fg:color4)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
 style = 'bold'
 untracked = '?'
 staged = '[++\($count\)](green)'
@@ -57,17 +48,35 @@ behind = '⇣${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 conflicted = ''
 
-[time]
-format = "[](fg:color8 bg:color4)[ ](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5) $time](fg:color3 bg:color4)[](fg:color4) "
-disabled = false
-time_format = "%R" # Hour:Minute Format
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
 
 [python]
-format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[(bg:color8 fg:color5)( ${virtualenv})](fg:color3 bg:color4)[](fg:color4) "
+format = "[$symbol($version)]($style)"
+style = "yellow bold"
 symbol = ''
-# pyenv_version_name = true
-pyenv_prefix = 'venv'
+version_format = 'v${raw}'
+detect_extensions = ['py', 'ipynb']
+detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
+python_binary = ['python', 'python3', 'python2']
 
 [rust]
-format = "[](fg:color8 bg:color4)[${symbol}${version}](bg:color8 fg:color5)[](fg:color8 bg:color4)[](fg:color4) "
-symbol = '' 
+format = "[$symbol($version)]($style) "
+style = "bold red"
+symbol = ''
+version_format = 'v${raw}'
+detect_extensions = ['rs']
+detect_files = ['Cargo.toml']
+
+[C]
+format = "[$symbol($version(-$name) )]($style) "
+style = "bold 149"
+symbol = ''
+detect_extensions = ['c', 'h']
+commands = [ [ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ] ]
+version_format = 'v${raw}'
