@@ -47,6 +47,10 @@ output_path = '~/.config/swaync/colors.css'
 input_path = '~/.config/matugen/templates/sequences'
 output_path = '~/.cache/wal/sequences'
 
+[templates.zathura]
+input_path = '~/.config/matugen/templates/zathura-colors'
+output_path = '~/.config/zathura/zathurarc'
+
 # [templates.starship]
 # input_path = '~/.config/matugen/templates/starship-colors.toml'
 # output_path = '~/.config/starship/starship.toml'
@@ -55,6 +59,6 @@ output_path = '~/.cache/wal/sequences'
 input_path = '~/.config/matugen/templates/yazi-theme.toml'
 output_path = '~/.config/yazi/theme.toml'
 
-[templates.waypaper]
-input_path = '~/.config/matugen/templates/waypaper.css'
-output_path = '~/.config/waypaper/style.css'
+[templates.zed]
+input_path = '~/.config/matugen/templates/zed-colors.json'
+output_path = '~/.config/zed/themes/matugen.json'

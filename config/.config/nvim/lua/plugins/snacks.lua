@@ -10,7 +10,6 @@ return {
 		explorer = { enabled = true },
 		image = { enabled = true },
 		indent = { enabled = true },
-		lazygit = { enabled = true },
 		notifier = {
 			enabled = true,
 			timeout = 5000,
@@ -25,7 +24,25 @@ return {
 		scope = { enabled = true },
 		scroll = { enabled = true },
 		statuscolumn = { enabled = true },
-		toggle = { enabled = true },
+		toggle = {
+			enabled = true,
+			map = vim.keymap.set,
+			which_key = true,
+			notify = true,
+			icon = {
+				enabled = " ",
+				disabled = " ",
+			},
+
+			color = {
+				enabled = "green",
+				disabled = "yellow",
+			},
+			wk_desc = {
+				enabled = "Disable ",
+				disabled = "Enable ",
+			},
+		},
 		words = { enabled = true },
 		dashboard = {
 			enabled = true,
@@ -134,13 +151,6 @@ return {
 				Snacks.picker.smart()
 			end,
 			desc = "Smart Find Files",
-		},
-		{
-			"<leader>,",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "Buffers",
 		},
 		{
 			"<leader>/",

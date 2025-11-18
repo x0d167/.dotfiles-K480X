@@ -6,6 +6,8 @@ alias hypr='uwsm start -- hyprland.desktop'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias aliasgrep='alias | grep -i'
 alias grep='grep --color=auto'
+alias minesweep='podman run --rm -it ghcr.io/cpcloud/minesweep-rs:latest'
+alias wttr='curl wttr.in/san_antonio'
 
 alias ebrc='nvim ~/.bashrc'
 alias hlp='less ~/.bashrc_help'

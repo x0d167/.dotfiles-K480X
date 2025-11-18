@@ -118,7 +118,7 @@
         "children-class": "not-memory",
         "transition-left-to-right": false
         },
-        "modules": ["custom/hyprstuff", "pulseaudio", "bluetooth", "custom/cliphist", "tray"]
+        "modules": ["custom/hyprstuff", "pulseaudio", "custom/cliphist", "tray"]
     },
     "pulseaudio": {
         "format": "{icon}   {volume}%",

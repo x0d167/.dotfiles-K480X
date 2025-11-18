@@ -27,7 +27,7 @@ map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
 -- Do not copy single char deletions to register
--- map("n", "x", '"_x', opts)
+map("n", "x", '"_x', opts)
 
 -- Center after search
 map("n", "n", "nzzzv", opts)
@@ -35,3 +35,6 @@ map("n", "N", "Nzzzv", opts)
 
 -- Clear search highlight
 map("n", "<Esc>", "<cmd>noh<cr>", opts)
+
+-- Calendar viewer
+map("n", "<leader>cl", ":Calendar<CR>", { desc = "Open calendar" })

@@ -13,16 +13,6 @@ max_size = "1920px 100%"
 margin = 40
 lazy = true
 
-[scratchpads.excalidraw]
-animation = "fromRight"
-command = "/usr/bin/chromium --profile-directory=Default --app-id=dnfpoenibinnbbckgbhendmlljoobcfg"
-class = "chrome-dnfpoenibinnbbckgbhendmlljoobcfg-Default"
-size = "50% 75%"
-unfocus = "hide"
-max_size = "1920px 100%"
-margin = 40
-lazy = true
-
 [scratchpads.signal]
 animation = "fromBottom"
 command = "signal-desktop"

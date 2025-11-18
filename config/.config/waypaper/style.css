@@ -1,14 +1,16 @@
-/* ~/.config/matugen/templates/waypaper.css */
 window {
-  background-color: #111318;
-  color: #e1e2e9;
+    background: rgba(17, 19, 24, 0.35);   /* use background, not background-color */
+    color: #e2e2e9;
 }
+
 button {
-  background-color: #111318;
-  color: #e1e2e9;
-  border-radius: 8px;
+    background: rgba(17, 19, 24, 0.55);
+    color: #e2e2e9;
+    border-radius: 8px;
+    border: none;
 }
+
 button:hover {
-  background-color: #43474e;
-  color: #c4c6cf;
+    background: rgba(67, 71, 78, 0.85);
+    color: #ffffff;
 }

@@ -20,8 +20,13 @@ return {
 				"yaml",
 				"markdown",
 				"markdown_inline",
+				"latex",
+				"html",
 			},
-			highlight = { enabled = true },
+			highlight = {
+				enabled = true,
+				disable = { "latex" },
+			},
 		},
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
@@ -43,7 +48,32 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			layout = {
+				spacing = 3,
+			},
+			win = {
+				no_overlap = true,
+				width = 50,
+				col = 2,
+				row = math.huge,
+				padding = { 1, 2 },
+				title = true,
+				title_pos = "center",
+				zindex = 1000,
+				bo = {},
+				wo = {},
+			},
+			notify = true,
+			plugins = {
+				marks = true,
+				registers = true,
+				spelling = {
+					enabled = true,
+					suggestions = 20,
+				},
+			},
+		},
 	},
 
 	-- quick navigation
@@ -266,35 +296,18 @@ return {
 
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown", "vimwiki" },
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
+
 		opts = {
 			completions = { lsp = { enabled = true } },
-			render_modes = { "n" }, -- only render in normal mode
 			file_types = { "markdown", "vimwiki" },
-			heading = {
-				enabled = true,
-				sign = true,
-				position = "inline",
-				icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
-				backgrounds = false, -- disable colored header backgrounds
-				-- Override highlight groups (simpler, uniform look)
-				highlight = false,
-				--             {
-				-- 	H1 = "Title",
-				-- 	H2 = "Title",
-				-- 	H3 = "Title",
-				-- 	H4 = "Title",
-				-- 	H5 = "Title",
-				-- 	H6 = "Title",
-				-- },
-				style = "simple", -- minimal visual mode
-			},
 			code = { enabled = true },
 			bullet = { enabled = true, icon = "•" },
 			quote = { enabled = true },
+			latex = { enabled = true },
 		},
 	},
 
@@ -342,6 +355,7 @@ return {
 	},
 	{
 		"supermaven-inc/supermaven-nvim",
+		enabled = true,
 		config = function()
 			require("supermaven-nvim").setup({})
 		end,
@@ -374,26 +388,29 @@ return {
 					path = "~/docs/wiki/",
 					syntax = "markdown",
 					ext = ".md",
-					diary_rel_path = "logs", -- Use logs/ instead of diary/
-					diary_date_format = "%Y%m%d", -- filename format, e.g., 20251025.md
+					diary_rel_path = "logs",
+					diary_date_format = "%Y%m%d",
 				},
 			}
 			vim.g.vimwiki_global_ext = 0
-			vim.g.vimwiki_markdown_link_ext = 1 -- keep .md links for compatibility
+			vim.g.vimwiki_markdown_link_ext = 1
 			vim.g.vimwiki_conceal_pre = 1
 			vim.g.vimwiki_auto_diary_index = 1
-			vim.cmd([[ 
-                augroup vimwiki_markdown_links
-                    autocmd!
-                    autocmd FileType markdown setlocal isfname+=@-@ isfname-==#
-                augroup END
+			vim.cmd([[
+            augroup vimwiki_markdown_links
+            autocmd!
+            autocmd FileType markdown setlocal isfname+=@-@ isfname-==#
+            augroup END
             ]])
+		end,
+		config = function()
+			-- ensure Treesitter treats vimwiki as markdown
+			vim.treesitter.language.register("markdown", "vimwiki")
 		end,
 		keys = {
 			{ "<leader>ww", "<cmd>VimwikiIndex<CR>", desc = "Open Vimwiki index" },
 			{ "<leader>wt", "<cmd>VimwikiTabIndex<CR>", desc = "Open Vimwiki in new tab" },
 			{ "<leader>ws", "<cmd>VimwikiUISelect<CR>", desc = "Select Vimwiki" },
-			-- fzf/snacks bindings
 			{
 				"<leader>wf",
 				function()
@@ -410,5 +427,15 @@ return {
 		config = true,
 		-- use opts = {} for passing setup options
 		-- this is equivalent to setup({}) function
+	},
+	{ "mattn/calendar-vim" },
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_compiler_method = "tectonic"
+		end,
 	},
 }

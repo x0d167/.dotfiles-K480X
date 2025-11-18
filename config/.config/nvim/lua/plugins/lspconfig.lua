@@ -14,6 +14,7 @@ return {
 				"ruff",
 				"pylsp",
 				"clangd",
+				"texlab",
 			},
 			automatic_enable = true,
 		})
@@ -68,12 +69,18 @@ return {
 		}
 		vim.lsp.enable("pylsp")
 
+		-- LaTeX
+		vim.lsp.config.texlab = {}
+		vim.lsp.enable("texlab")
+
 		-- Bash
 		vim.lsp.config.bashls = {}
 		vim.lsp.enable("bashls")
+
 		-- JSON
 		vim.lsp.config.jsonls = {}
 		vim.lsp.enable("jsonls")
+
 		-- Lua (Neovim config)
 		vim.lsp.config.lua_ls = {
 			settings = {

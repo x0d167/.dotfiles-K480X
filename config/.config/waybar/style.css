@@ -3,7 +3,7 @@
 * {
     /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
     font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     transition: background-color .3s ease-out;
 }
 
@@ -23,17 +23,17 @@ window#waybar {
     /* background: @primary_container; */
     background: @blur_background;
     color: @on_surface;
-    margin: 5px 10px;
-    padding: 0 5px;
+    margin: 2.5px 5px;
+    padding: 0 2.5px;
     /* border: 2px solid @primary; */
-    border-radius: 15px;
+    border-radius: 10px;
 }
 .modules-left {
     padding: 0;
     background: @blur_background;
 }
 .modules-center {
-    padding: 0 10px;
+    padding: 0 2.5px;
     background: @blur_background;
 }
 
@@ -61,8 +61,8 @@ window#waybar {
 #power-profiles-daemon,
 #language,
 #mpd {
-    padding: 0 10px;
-    border-radius: 15px;
+    padding: 0 5px;
+    border-radius: 10px;
 }
 
 /* #clock:hover, */

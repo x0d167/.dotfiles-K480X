@@ -1,0 +1,248 @@
+/*
+#   Kiroshi Base Rofi Theme
+#   Adapted from Stephan Raabe (2023)
+#   Customized for centered layout and Matugen compatibility
+*/
+
+/* ---- Configuration ---- */
+configuration {
+    modi:                       "run";
+    font:                       "Fira Sans 11";
+    show-icons:                 true;
+    icon-theme:                 "kora";
+    display-run:                 " ";
+}
+
+/* ---- Load font ---- */
+@import "~/.config/K480X/settings/rofi-font.rasi"
+
+/* ---- Load colors ---- */
+@theme "~/.config/rofi/colors.rasi"
+
+/* ---- Load wallpaper ---- */
+@import "~/.config/K480X/cache/current_wallpaper.rasi"
+
+/* ---- Load border width ---- */
+@import "~/.config/K480X/settings/rofi-border.rasi"
+
+/* ---- Load border radius ---- */
+@import "~/.config/K480X/settings/rofi-border-radius.rasi"
+
+/* ---- Map colors ---- */
+* {
+    color11: @primary;
+    color5: @on-primary-fixed;
+    foreground: @on-surface;
+    background: rgba(0,0,1,0.5);
+}
+
+// Main //
+window {
+    height:                      56em;
+    width:                       35em;
+    transparency:                "real";
+    fullscreen:                  false;
+    enabled:                     true;
+    cursor:                      "default";
+    spacing:                     0em;
+    padding:                     0em;
+    border:                      @border-width;
+    border-color:                @color11;
+    border-radius:               @border-radius;
+    background-color:            @background;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     0em;
+    padding:                     0em;
+    orientation:                 horizontal;
+    children:                    [ "leftpanel", "listbox" ];
+    background-color:            transparent;
+    background-image:            @current-image;
+}
+
+leftpanel {
+    orientation: vertical;
+    width: 50%;
+    background-color: transparent;
+    children: [ "inputbar" ];
+    vertical-align: 0.5;
+}
+
+// Inputs //
+inputbar {
+    enabled:                     true;
+    spacing:                     0em;
+    padding:                     3em 2em;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+    background-color:            transparent;
+    height:                      4em;
+    vertical-align:              0.5;
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "  ";
+    padding:                     1em 0.2em 0em 0em;
+    text-color:                  @foreground;
+    border-radius:               2em 0em 0em 2em;
+    background-color:            @color5;
+    // background-image:            url("~/.config/K480X/cache/current_wallpaper.rasi", width);
+}
+
+entry {
+    enabled:                     true;
+    border-radius:               0em 2em 2em 0em;
+    spacing:                     1em;
+    padding:                     1em;
+    background-color:            @color5;
+    text-color:                  @foreground;
+    cursor:                      text;
+    placeholder:                 "run";
+    placeholder-color:           inherit;
+}
+
+// Lists //
+listbox {
+    padding:                     2em;
+    spacing:                     1.2em;
+    orientation:                 vertical;
+    children:                    [ "listview" ];
+    background-color:            @background;
+}
+
+listview {
+    padding:                     1.5em;
+    spacing:                     0.8em;
+    enabled:                     true;
+    columns:                     1;
+    lines:                       5;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                false;
+    fixed-columns:               false;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+
+// Modes //
+mode-switcher {
+    orientation:                 vertical;
+    width:                       6.6em;
+    enabled:                     true;
+    padding:                     1.5em;
+    spacing:                     1.5em;
+    background-color:            transparent;
+}
+
+button {
+    cursor:                      pointer;
+    border-radius:               2em;
+    background-color:            @background;
+    text-color:                  @foreground;
+}
+
+button selected {
+    background-color:            @color5;
+    text-color:                  @foreground;
+}
+
+
+// Elements //
+element {
+    enabled:                     true;
+    expand:                      true;
+    spacing:                     1em;
+    padding:                     0.7em 1em;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @color5;
+    text-color:                  @foreground;
+    border-radius:               1.5em;
+}
+
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element normal.urgent {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element normal.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element selected.urgent {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element selected.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.normal {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.urgent {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element alternate.active {
+    background-color:            inherit;
+    text-color:                  @foreground;
+}
+
+element-icon {
+    size:                        4.5em;
+    margin:                      0em 1em 0em 0em;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+    border-radius:               0em;
+}
+
+element-text {
+    expand:                      true;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+    cursor:                      inherit;
+    background-color:            transparent;
+    font:                        "Fira Sans SemiBold 13";
+    text-color:                  @foreground;
+    wrap:                        true;
+}
+
+// Error message //
+error-message {
+    text-color:                  @foreground;
+    background-color:            @background;
+    text-transform:              capitalize;
+    children:                    [ "textbox" ];
+}
+
+textbox {
+    text-color:                  inherit;
+    background-color:            inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
