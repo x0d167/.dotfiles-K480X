@@ -32,6 +32,31 @@ export FFMPEG_DATADIR="$XDG_CONFIG_HOME/ffmpeg"
 export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
 export MANPAGER='nvim +Man!'
 export OPENAUDIBLE_HOME="$XDG_CONFIG_HOME/openaudible"
+export GHCUP_INSTALL_BASE_PREFIX="$XDG_DATA_HOME"
+
+# --- XDG Cleanups ---
+
+# Android
+export ANDROID_HOME="$HOME/.local/share/android"
+export ANDROID_USER_HOME="$HOME/.config/android" # Moves .android
+
+# Node / NPM
+export NPM_CONFIG_CACHE="$HOME/.cache/npm"             # Moves .npm cache
+
+# Go (if you use it)
+export GOPATH="$HOME/.local/share/go"
+
+# Python
+export PYTHON_HISTORY="$HOME/.local/state/python/history" # Requires Python 3.13+, mostly
+
+# Wget (The annoying .wget-hsts file)
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+
+# Readline / Bash History (Moves .bash_history)
+export HISTFILE="$HOME/.local/state/bash/history"
+
+# Docker
+export DOCKER_CONFIG="$HOME/.config/docker"
 
 # Editor
 if command -v nvim &>/dev/null; then
@@ -55,7 +80,7 @@ export LESS_TERMCAP_mb=$'\E[01;31m'
 # (rest of LESS_TERMCAPs)
 
 # PATH
-export PATH="$PATH:$HOME/.local/bin:/var/lib/flatpak/exports/bin:$HOME/.local/share/flatpak/exports/bin:/opt/nvim/:/home/operator/.lmstudio/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/scripts:/var/lib/flatpak/exports/bin:$HOME/.local/share/flatpak/exports/bin:/opt/nvim/:"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export LIBVIRT_DEFAULT_URI='qemu:///system'
 export AURDEST="$HOME/.cache/aurutils"

@@ -22,6 +22,7 @@ configuration {
     window-format:              "{w} · {c} · {t}";
 }
 
+
 /* ---- Load font ---- */
 @import "~/.config/K480X/settings/rofi-font.rasi"
 
@@ -29,13 +30,8 @@ configuration {
 @theme "~/.config/rofi/colors.rasi"
 
 /* ---- Load wallpaper ---- */
-@import "~/.config/K480X/cache/current_wallpaper.rasi"
+@import "~/.cache/wallpapers/current.rasi"
 
-/* ---- Load border width ---- */
-@import "~/.config/K480X/settings/rofi-border.rasi"
-
-/* ---- Load border radius ---- */
-@import "~/.config/K480X/settings/rofi-border-radius.rasi"
 
 /* ---- Map colors ---- */
 * {
@@ -55,9 +51,9 @@ window {
     cursor:                      "default";
     spacing:                     0em;
     padding:                     0em;
-    border:                      @border-width;
+    border:                      3px;
     border-color:                @color11;
-    border-radius:               @border-radius;
+    border-radius:               2em;
     background-color:            @background;
 }
 

@@ -1,53 +1,104 @@
 #!/usr/bin/env bash
 
 input="$1"
-cache_dir="$HOME/.config/K480X/cache"
-archive_dir="$cache_dir/wallpaper-generated"
 
-# Tell Matugen the current wallpaper
-matugen image "$input"
-wallust run "$input"
+# PATHS --------------------------------------------------------
 
-# Reload Waybar to apply new theme
-killall waybar 2>/dev/null
-waybar & 
+CACHEDIR="$HOME/.cache/wallpapers"
+CURRENT_FILE="$CACHEDIR/current"
+RASI_FILE="$CACHEDIR/current.rasi"
 
-mkdir -p "$cache_dir" "$archive_dir"
+BLURDIR="$CACHEDIR/blurred"
 
-filename=$(basename "$input")
-base="${filename%.*}"
+# NEXT: wlogout and SDDM paths (we will troubleshoot if needed)
+WLOGOUT_BG="$BLURDIR/wlogout.png"      # symlink or copy target
+SDDM_BG="$BLURDIR/sddm.png"            # symlink or copy target
 
-# Write current wallpaper path to file
-echo "$input" > "$cache_dir/current_wallpaper"
+mkdir -p "$CACHEDIR" "$BLURDIR"
 
-# Define outputs
-blurred="$cache_dir/blurred_wallpaper.png"
-square="$cache_dir/square_wallpaper.png"
-rasi_file="$cache_dir/current_wallpaper.rasi"
+update_rofi_background() {
+    # Use blurred wallpaper for Rofi
+    local base="$(basename "$input")"
+    local name="${base%.*}"
+    local blur_src="$BLURDIR/$name-blur.png"
 
-archived_blur="$archive_dir/${base}_blur.png"
-archived_square="$archive_dir/${base}_square.png"
+    if [[ ! -f "$blur_src" ]]; then
+        echo "Warning: blurred wallpaper missing. Run grip-wallpaper-cache.sh"
+        return
+    fi
 
-# Use cached if available
-if [[ -f "$archived_blur" && -f "$archived_square" ]]; then
-    cp "$archived_blur" "$blurred"
-    cp "$archived_square" "$square"
-else
-    # Generate 50x30 blurred version
-    magick "$input" -resize 1920x1200^ -gravity center -extent 1920x1200 -blur 0x12 "PNG24:$blurred"
-
-    # Generate small square crop
-    magick "$input" -resize 1200x1200^ -gravity center -extent 1200x1200 "PNG24:$square"
-
-    # Save to archive
-    cp "$blurred" "$archived_blur"
-    cp "$square" "$archived_square"
-fi
-
-# Generate .rasi for Rofi use
-cat <<EOF > "$rasi_file"
+    cat <<EOF > "$RASI_FILE"
 * {
-    current-image: url("$blurred", height);
+    current-image: url("$blur_src", height);
 }
 EOF
+}
+
+update_wlogout_background() {
+    local base="$(basename "$input")"
+    local name="${base%.*}"
+    local blur_src="$BLURDIR/$name-blur.png"
+
+    if [[ ! -f "$blur_src" ]]; then
+        echo "Warning: blurred wallpaper missing. Run grip-wallpaper-cache.sh"
+        return
+    fi
+
+    # wlogout expects background INSIDE ~/.config/wlogout
+    ln -sf "$blur_src" "$HOME/.config/wlogout/bg.png"
+}
+
+update_sddm_background() {
+    local base="$(basename "$input")"
+    local name="${base%.*}"
+    local blur_src="$BLURDIR/$name-blur.png"
+
+    if [[ ! -f "$blur_src" ]]; then
+        echo "Warning: blurred wallpaper missing. Run grip-wallpaper-cache.sh"
+        return
+    fi
+
+    local sddm_bg="/usr/share/sddm/themes/elarun/images/background.png"
+
+    # Ensure directory exists
+    if [[ ! -d "/usr/share/sddm/themes/elarun/images" ]]; then
+        echo "SDDM directory missing!"
+        return
+    fi
+
+    # Symlink blurred wallpaper for SDDM
+    sudo ln -sf "$blur_src" "$sddm_bg"
+
+    echo "Updated SDDM background → $sddm_bg"
+}
+
+apply_wallust_matugen() {
+    matugen image "$input"
+    wallust run "$input"
+}
+
+reload_waybar() {
+    killall waybar 2>/dev/null
+    waybar &>/dev/null &
+}
+
+write_current_path() {
+    echo "$input" > "$CURRENT_FILE"
+}
+
+# Tell Matugen and Wallust the current wallpaper
+apply_wallust_matugen
+
+# Reload Waybar to apply new theme
+reload_waybar 
+
+
+# Write current wallpaper path to file
+write_current_path
+
+# Update Rofi and Wlogout backgrounds
+update_wlogout_background
+update_rofi_background
+
+
 

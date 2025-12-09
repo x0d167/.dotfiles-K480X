@@ -34,6 +34,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export FFMPEG_DATADIR="$XDG_CONFIG_HOME/ffmpeg"
 export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"
 export OPENAUDIBLE_HOME="$XDG_CONFIG_HOME/openaudible"
+export GHCUP_INSTALL_BASE_PREFIX="$XDG_DATA_HOME"
 
 # Syntax/color highlighting for man pages
 export MANPAGER='nvim +Man!'
@@ -74,7 +75,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 # PATH additions
-export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bin:$HOME/.local/share/flatpak/exports/bin:$HOME/.cargo/bin/hx"
+export PATH=$PATH:"$HOME/.local/bin:$HOME/.local/scripts/:$HOME/.cargo/bin:/var/lib/flatpak/exports/bin:$HOME/.local/share/flatpak/exports/bin:$HOME/.cargo/bin/hx"
 export PATH="$PATH:/opt/nvim/"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export LIBVIRT_DEFAULT_URI='qemu:///system'

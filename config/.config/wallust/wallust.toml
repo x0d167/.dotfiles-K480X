@@ -51,3 +51,4 @@ ghostty = { template = 'ghostty-colors', target = '~/.config/ghostty/themes/wall
 # waybar = { src = "waybar-colors.css", target = "~/.config/waybar/colors.css" }
 # hypr = { src = "hyprland-colors.conf", target = "~/.config/hypr/colors.conf" }
 zed = { template = 'zed.json', target = '~/.config/zed/themes/wallust.json' }
+foot = { template = 'foot-colors.ini', target = '~/.config/foot/colors.ini' }

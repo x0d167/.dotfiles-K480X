@@ -22,6 +22,7 @@ return {
 				"markdown_inline",
 				"latex",
 				"html",
+				"haskell",
 			},
 			highlight = {
 				enabled = true,
@@ -437,5 +438,11 @@ return {
 			vim.g.vimtex_view_method = "zathura"
 			vim.g.vimtex_compiler_method = "tectonic"
 		end,
+	},
+	{
+		"chomosuke/typst-preview.nvim",
+		lazy = false, -- or ft = 'typst'
+		version = "1.*",
+		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
 	},
 }
